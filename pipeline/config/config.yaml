@@ -1,0 +1,49 @@
+algorithms:
+  bgCorrection: normexp
+  withinArray:  loess
+  betweenArray: quantile
+  median: no
+
+files:
+  library: /home/nag9/workspace/pipeline/lib
+  metadata: /home/nag9/Desktop/microarray/2606/metadata_2606.txt
+  rawDir: /home/nag9/Desktop/microarray/2606
+  tmpDir:  /home/nag9/workspace/pipeline/tmp
+  output: /home/nag9/Desktop/processed/2606/normexp_loess_quantile_no_outliers.tsv
+
+quiet:
+  backgroundCorrection: no
+  withinArrayNormalization:  no
+
+dixon:
+  cutoff: 0
+
+
+####################################
+####### End User Editing ###########
+####################################
+bgText:
+  main: > 
+    The following code draws a plot of the raw data for each microarray. 
+    Specifically, it draws an MA plot of the regulation values (M values, 
+    differential expression) of all the genes against their average 
+    expression (A). The red and green lines in the plot represent the 
+    mean and median, respectively. The turquoise line in the plot 
+    represents the lowess fit line.
+  verbose: >
+    The following MA plots show the data after background correction.
+  quiet: >
+    These diagnostic plots have been suppressed. Please edit the 
+    config.yaml file and set quiet:backgroundCorrection to no to 
+    re-enable them. 
+    
+wanText:
+  vsn: The vsn algorithm does not require within array normalization.
+  other: >
+    In this section, we normalize within arrays using the xxx algorithm. 
+  verbose: >
+    The following MA plots show the data after with array normalization.
+  quiet: >
+    These diagnostic plots have been suppressed. Please edit the config.yaml
+    file and set quiet:withArrayNormalization to no to re-enable them. 
+   

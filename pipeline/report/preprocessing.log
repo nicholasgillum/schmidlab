@@ -1,0 +1,1661 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.1.12)  19 MAR 2011 22:38
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**preprocessing.tex
+(./preprocessing.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks15
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amscd.sty
+Package: amscd 1999/11/29 v1.2d
+\athelp@=\toks19
+\minaw@=\dimen112
+\bigaw@=\dimen113
+\minCDarrowwidth=\dimen114
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count99
+))
+\Gin@req@height=\dimen115
+\Gin@req@width=\dimen116
+)
+(/usr/share/texmf-texlive/tex/latex/vmargin/vmargin.sty
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+\PaperWidth=\dimen117
+\PaperHeight=\dimen118
+) (/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip46
+\subfigcapskip=\skip47
+\subfigcaptopadj=\dimen119
+\subfigbottomskip=\skip48
+\subfigcapmargin=\dimen120
+\subfiglabelskip=\skip49
+\c@subfigure=\count100
+\c@lofdepth=\count101
+\c@subtable=\count102
+\c@lotdepth=\count103
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip50
+\subfig@bottom=\skip51
+)
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texmf-texlive/tex/latex/psnfss/mathpazo.sty
+Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
+\symupright=\mathgroup4
+)
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen121
+\Hy@linkcounter=\count104
+\Hy@pagecounter=\count105
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+))
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing OFF on input line 2995.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3191.
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 3428.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)))
+\Fld@menulength=\count106
+\Field@Width=\dimen122
+\Fld@charsize=\dimen123
+\Field@toks=\toks21
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing OFF on input line 4392.
+Package hyperref Info: Link coloring OFF on input line 4397.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count107
+\c@Item=\count108
+\c@Hfootnote=\count109
+)
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count110
+)
+(/usr/share/texmf/tex/latex/R/Sweave.sty
+Package: Sweave 
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-texlive/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count111
+\FV@InFile=\read1
+\FV@TabBox=\box28
+\c@FancyVerbLine=\count112
+\FV@StepNumber=\count113
+\FV@OutFile=\write3
+) (/usr/share/texmf/tex/latex/R/upquote.sty
+Package: upquote 2003/08/11 v1.1 Covington's upright-quote modification to verb
+atim and verb
+
+(/usr/share/texmf-texlive/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 311.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 312.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 313.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 314.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 315.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 316.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 317.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 318.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 319.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 320.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 321.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 322.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 323.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
+))
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texmf-texlive/tex/latex/ae/ae.sty
+Package: ae 2001/02/12 1.3 Almost European Computer Modern
+
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+)
+LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
+
+(/usr/share/texmf-texlive/tex/latex/ae/t1aer.fd
+File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
+)))) (./preprocessing.aux)
+\openout1 = `preprocessing.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 19.
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 19.
+
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count114
+\scratchdimen=\dimen124
+\scratchbox=\box29
+\nofMPsegments=\count115
+\nofMParguments=\count116
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count117
+\MPscratchDim=\dimen125
+\MPnumerator=\count118
+\everyMPtoPDFconversion=\toks23
+)
+Package hyperref Info: Link coloring OFF on input line 19.
+ (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count119
+)
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+
+(./preprocessing.out) (./preprocessing.out)
+\@outlinefile=\write4
+\openout4 = `preprocessing.out'.
+
+\AtBeginShipoutBox=\box30
+LaTeX Font Info:    Try loading font information for OT1+pplx on input line 25.
+
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1pplx.fd
+File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
+)
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 25.
+
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 25.
+
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 25.
+
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 25.
+
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./preprocessing.toc)
+\tf@toc=\write5
+\openout5 = `preprocessing.toc'.
+
+ (./preprocessing.lofpdfTeX warning (ext4): destination with the same identifie
+r (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.36 ...ter background correction}}{50}{figure.36}
+                                                   [1] [2] [3] [4])
+\tf@lof=\write6
+\openout6 = `preprocessing.lof'.
+
+ [5]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 37.
+
+(/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+) [6] [7] [8] [9] [10] [11]
+[12] [13] [14]
+</home/nag9/workspace/pipeline/tmp/maAfterBg0.png, id=521, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg0.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg0.png> [15 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg0.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg1.png, id=526, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg1.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg1.png> [16 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg1.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg2.png, id=531, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg2.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg2.png> [17 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg2.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg3.png, id=536, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg3.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg3.png> [18 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg3.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg4.png, id=542, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg4.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg4.png> [19 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg4.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg5.png, id=547, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg5.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg5.png> [20 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg5.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg6.png, id=552, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg6.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg6.png> [21 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg6.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg7.png, id=557, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg7.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg7.png> [22 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg7.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg8.png, id=562, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg8.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg8.png> [23 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg8.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg9.png, id=567, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg9.png Graphic file (type png)
+<use /home/nag9/workspace/pipeline/tmp/maAfterBg9.png> [24 </home/nag9/workspac
+e/pipeline/tmp/maAfterBg9.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg10.png, id=573, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg10.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg10.png> [25 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg10.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg11.png, id=578, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg11.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg11.png> [26 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg11.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg12.png, id=583, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg12.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg12.png> [27 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg12.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg13.png, id=588, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg13.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg13.png> [28 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg13.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg14.png, id=593, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg14.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg14.png> [29 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg14.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg15.png, id=598, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg15.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg15.png> [30 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg15.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg16.png, id=604, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg16.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg16.png> [31 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg16.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg17.png, id=609, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg17.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg17.png> [32 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg17.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg18.png, id=614, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg18.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg18.png> [33 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg18.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg19.png, id=619, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg19.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg19.png> [34 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg19.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg20.png, id=624, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg20.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg20.png> [35 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg20.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg21.png, id=629, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg21.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg21.png> [36 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg21.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg22.png, id=635, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg22.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg22.png> [37 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg22.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg23.png, id=640, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg23.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg23.png> [38 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg23.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg24.png, id=645, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg24.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg24.png> [39 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg24.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg25.png, id=650, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg25.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg25.png> [40 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg25.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg26.png, id=655, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg26.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg26.png> [41 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg26.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg27.png, id=660, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg27.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg27.png> [42 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg27.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg28.png, id=666, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg28.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg28.png> [43 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg28.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg29.png, id=671, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg29.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg29.png> [44 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg29.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg30.png, id=676, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg30.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg30.png> [45 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg30.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg31.png, id=681, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg31.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg31.png> [46 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg31.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg32.png, id=686, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg32.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg32.png> [47 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg32.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg33.png, id=691, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg33.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg33.png> [48 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg33.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg34.png, id=697, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg34.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg34.png> [49 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg34.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg35.png, id=702, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg35.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg35.png> [50 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg35.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg36.png, id=707, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg36.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg36.png> [51 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg36.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg37.png, id=712, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg37.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg37.png> [52 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg37.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg38.png, id=717, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg38.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg38.png> [53 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg38.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg39.png, id=722, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg39.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg39.png> [54 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg39.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg40.png, id=728, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg40.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg40.png> [55 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg40.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg41.png, id=733, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg41.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg41.png> [56 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg41.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg42.png, id=738, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg42.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg42.png> [57 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg42.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg43.png, id=743, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg43.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg43.png> [58 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg43.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg44.png, id=748, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg44.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg44.png> [59 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg44.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg45.png, id=753, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg45.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg45.png> [60 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg45.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg46.png, id=759, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg46.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg46.png> [61 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg46.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg47.png, id=764, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg47.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg47.png> [62 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg47.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg48.png, id=769, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg48.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg48.png> [63 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg48.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg49.png, id=774, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg49.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg49.png> [64 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg49.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg50.png, id=779, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg50.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg50.png> [65 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg50.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg51.png, id=784, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg51.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg51.png> [66 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg51.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg52.png, id=790, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg52.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg52.png> [67 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg52.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg53.png, id=795, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg53.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg53.png> [68 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg53.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg54.png, id=800, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg54.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg54.png> [69 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg54.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg55.png, id=805, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg55.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg55.png> [70 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg55.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg56.png, id=810, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg56.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg56.png> [71 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg56.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg57.png, id=815, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg57.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg57.png> [72 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg57.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg58.png, id=821, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg58.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg58.png> [73 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg58.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg59.png, id=826, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg59.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg59.png> [74 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg59.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg60.png, id=831, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg60.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg60.png> [75 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg60.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg61.png, id=836, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg61.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg61.png> [76 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg61.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg62.png, id=841, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg62.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg62.png> [77 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg62.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBg63.png, id=846, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBg63.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBg63.png> [78 </home/nag9/worksp
+ace/pipeline/tmp/maAfterBg63.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/boxPlot1.png, id=852, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/boxPlot1.png Graphic file (type png)
+
+<use /home/nag9/workspace/pipeline/tmp/boxPlot1.png> [79 </home/nag9/workspace/
+pipeline/tmp/boxPlot1.png (PNG copy)>] [80] [81] [82] [83] [84]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN0.png, id=879, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN0.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN0.png> [85 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN0.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN1.png, id=884, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN1.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN1.png> [86 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN1.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN2.png, id=889, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN2.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN2.png> [87 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN2.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN3.png, id=894, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN3.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN3.png> [88 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN3.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN4.png, id=899, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN4.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN4.png> [89 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN4.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN5.png, id=904, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN5.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN5.png> [90 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN5.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN6.png, id=910, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN6.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN6.png> [91 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN6.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN7.png, id=915, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN7.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN7.png> [92 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN7.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN8.png, id=920, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN8.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN8.png> [93 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN8.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN9.png, id=925, 505.89pt x 505.89pt
+>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN9.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN9.png> [94 </home/nag9/worksp
+ace/pipeline/tmp/maAfterWAN9.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN10.png, id=930, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN10.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN10.png> [95 </home/nag9/works
+pace/pipeline/tmp/maAfterWAN10.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN11.png, id=935, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN11.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN11.png> [96 </home/nag9/works
+pace/pipeline/tmp/maAfterWAN11.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN12.png, id=941, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN12.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN12.png> [97 </home/nag9/works
+pace/pipeline/tmp/maAfterWAN12.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN13.png, id=946, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN13.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN13.png> [98 </home/nag9/works
+pace/pipeline/tmp/maAfterWAN13.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN14.png, id=951, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN14.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN14.png> [99 </home/nag9/works
+pace/pipeline/tmp/maAfterWAN14.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN15.png, id=956, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN15.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN15.png> [100 </home/nag9/work
+space/pipeline/tmp/maAfterWAN15.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN16.png, id=961, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN16.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN16.png> [101 </home/nag9/work
+space/pipeline/tmp/maAfterWAN16.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN17.png, id=966, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN17.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN17.png> [102 </home/nag9/work
+space/pipeline/tmp/maAfterWAN17.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN18.png, id=972, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN18.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN18.png> [103 </home/nag9/work
+space/pipeline/tmp/maAfterWAN18.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN19.png, id=977, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN19.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN19.png> [104 </home/nag9/work
+space/pipeline/tmp/maAfterWAN19.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN20.png, id=982, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN20.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN20.png> [105 </home/nag9/work
+space/pipeline/tmp/maAfterWAN20.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN21.png, id=987, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN21.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN21.png> [106 </home/nag9/work
+space/pipeline/tmp/maAfterWAN21.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN22.png, id=992, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN22.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN22.png> [107 </home/nag9/work
+space/pipeline/tmp/maAfterWAN22.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN23.png, id=997, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN23.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN23.png> [108 </home/nag9/work
+space/pipeline/tmp/maAfterWAN23.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN24.png, id=1003, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN24.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN24.png> [109 </home/nag9/work
+space/pipeline/tmp/maAfterWAN24.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN25.png, id=1008, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN25.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN25.png> [110 </home/nag9/work
+space/pipeline/tmp/maAfterWAN25.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN26.png, id=1013, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN26.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN26.png> [111 </home/nag9/work
+space/pipeline/tmp/maAfterWAN26.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN27.png, id=1018, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN27.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN27.png> [112 </home/nag9/work
+space/pipeline/tmp/maAfterWAN27.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN28.png, id=1023, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN28.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN28.png> [113 </home/nag9/work
+space/pipeline/tmp/maAfterWAN28.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN29.png, id=1028, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN29.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN29.png> [114 </home/nag9/work
+space/pipeline/tmp/maAfterWAN29.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN30.png, id=1034, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN30.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN30.png> [115 </home/nag9/work
+space/pipeline/tmp/maAfterWAN30.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN31.png, id=1039, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN31.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN31.png> [116 </home/nag9/work
+space/pipeline/tmp/maAfterWAN31.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN32.png, id=1044, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN32.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN32.png> [117 </home/nag9/work
+space/pipeline/tmp/maAfterWAN32.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN33.png, id=1049, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN33.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN33.png> [118 </home/nag9/work
+space/pipeline/tmp/maAfterWAN33.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN34.png, id=1054, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN34.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN34.png> [119 </home/nag9/work
+space/pipeline/tmp/maAfterWAN34.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN35.png, id=1059, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN35.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN35.png> [120 </home/nag9/work
+space/pipeline/tmp/maAfterWAN35.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN36.png, id=1065, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN36.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN36.png> [121 </home/nag9/work
+space/pipeline/tmp/maAfterWAN36.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN37.png, id=1070, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN37.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN37.png> [122 </home/nag9/work
+space/pipeline/tmp/maAfterWAN37.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN38.png, id=1075, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN38.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN38.png> [123 </home/nag9/work
+space/pipeline/tmp/maAfterWAN38.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN39.png, id=1080, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN39.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN39.png> [124 </home/nag9/work
+space/pipeline/tmp/maAfterWAN39.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN40.png, id=1085, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN40.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN40.png> [125 </home/nag9/work
+space/pipeline/tmp/maAfterWAN40.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN41.png, id=1090, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN41.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN41.png> [126 </home/nag9/work
+space/pipeline/tmp/maAfterWAN41.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN42.png, id=1096, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN42.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN42.png> [127 </home/nag9/work
+space/pipeline/tmp/maAfterWAN42.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN43.png, id=1101, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN43.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN43.png> [128 </home/nag9/work
+space/pipeline/tmp/maAfterWAN43.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN44.png, id=1106, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN44.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN44.png> [129 </home/nag9/work
+space/pipeline/tmp/maAfterWAN44.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN45.png, id=1111, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN45.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN45.png> [130 </home/nag9/work
+space/pipeline/tmp/maAfterWAN45.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN46.png, id=1116, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN46.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN46.png> [131 </home/nag9/work
+space/pipeline/tmp/maAfterWAN46.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN47.png, id=1121, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN47.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN47.png> [132 </home/nag9/work
+space/pipeline/tmp/maAfterWAN47.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN48.png, id=1127, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN48.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN48.png> [133 </home/nag9/work
+space/pipeline/tmp/maAfterWAN48.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN49.png, id=1132, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN49.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN49.png> [134 </home/nag9/work
+space/pipeline/tmp/maAfterWAN49.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN50.png, id=1137, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN50.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN50.png> [135 </home/nag9/work
+space/pipeline/tmp/maAfterWAN50.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN51.png, id=1142, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN51.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN51.png> [136 </home/nag9/work
+space/pipeline/tmp/maAfterWAN51.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN52.png, id=1147, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN52.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN52.png> [137 </home/nag9/work
+space/pipeline/tmp/maAfterWAN52.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN53.png, id=1152, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN53.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN53.png> [138 </home/nag9/work
+space/pipeline/tmp/maAfterWAN53.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN54.png, id=1158, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN54.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN54.png> [139 </home/nag9/work
+space/pipeline/tmp/maAfterWAN54.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN55.png, id=1163, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN55.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN55.png> [140 </home/nag9/work
+space/pipeline/tmp/maAfterWAN55.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN56.png, id=1168, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN56.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN56.png> [141 </home/nag9/work
+space/pipeline/tmp/maAfterWAN56.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN57.png, id=1173, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN57.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN57.png> [142 </home/nag9/work
+space/pipeline/tmp/maAfterWAN57.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN58.png, id=1178, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN58.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN58.png> [143 </home/nag9/work
+space/pipeline/tmp/maAfterWAN58.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN59.png, id=1183, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN59.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN59.png> [144 </home/nag9/work
+space/pipeline/tmp/maAfterWAN59.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN60.png, id=1189, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN60.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN60.png> [145 </home/nag9/work
+space/pipeline/tmp/maAfterWAN60.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN61.png, id=1194, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN61.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN61.png> [146 </home/nag9/work
+space/pipeline/tmp/maAfterWAN61.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN62.png, id=1199, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN62.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN62.png> [147 </home/nag9/work
+space/pipeline/tmp/maAfterWAN62.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterWAN63.png, id=1204, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterWAN63.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterWAN63.png> [148 </home/nag9/work
+space/pipeline/tmp/maAfterWAN63.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/boxPlot2.png, id=1209, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/boxPlot2.png Graphic file (type png)
+
+<use /home/nag9/workspace/pipeline/tmp/boxPlot2.png> [149 </home/nag9/workspace
+/pipeline/tmp/boxPlot2.png (PNG copy)>] [150] [151] [152] [153]
+</home/nag9/workspace/pipeline/tmp/histBeforeBAN.png, id=1232, 505.89pt x 505.8
+9pt>
+File: /home/nag9/workspace/pipeline/tmp/histBeforeBAN.png Graphic file (type pn
+g)
+ <use /home/nag9/workspace/pipeline/tmp/histBeforeBAN.png>
+</home/nag9/workspace/pipeline/tmp/histAfterBAN.png, id=1233, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/histAfterBAN.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/histAfterBAN.png> [154] [155 </home/nag
+9/workspace/pipeline/tmp/histBeforeBAN.png (PNG copy)> </home/nag9/workspace/pi
+peline/tmp/histAfterBAN.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/boxPlot3.png, id=1245, 505.89pt x 505.89pt>
+File: /home/nag9/workspace/pipeline/tmp/boxPlot3.png Graphic file (type png)
+
+<use /home/nag9/workspace/pipeline/tmp/boxPlot3.png> [156 </home/nag9/workspace
+/pipeline/tmp/boxPlot3.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN0.png, id=1252, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN0.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN0.png> [157 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN0.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN1.png, id=1257, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN1.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN1.png> [158 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN1.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN2.png, id=1262, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN2.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN2.png> [159 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN2.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN3.png, id=1267, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN3.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN3.png> [160 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN3.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN4.png, id=1272, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN4.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN4.png> [161 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN4.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN5.png, id=1277, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN5.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN5.png> [162 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN5.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN6.png, id=1283, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN6.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN6.png> [163 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN6.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN7.png, id=1288, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN7.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN7.png> [164 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN7.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN8.png, id=1293, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN8.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN8.png> [165 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN8.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN9.png, id=1298, 505.89pt x 505.89p
+t>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN9.png Graphic file (type png)
+
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN9.png> [166 </home/nag9/works
+pace/pipeline/tmp/maAfterBAN9.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN10.png, id=1303, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN10.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN10.png> [167 </home/nag9/work
+space/pipeline/tmp/maAfterBAN10.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN11.png, id=1308, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN11.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN11.png> [168 </home/nag9/work
+space/pipeline/tmp/maAfterBAN11.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN12.png, id=1314, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN12.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN12.png> [169 </home/nag9/work
+space/pipeline/tmp/maAfterBAN12.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN13.png, id=1319, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN13.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN13.png> [170 </home/nag9/work
+space/pipeline/tmp/maAfterBAN13.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN14.png, id=1324, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN14.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN14.png> [171 </home/nag9/work
+space/pipeline/tmp/maAfterBAN14.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN15.png, id=1329, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN15.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN15.png> [172 </home/nag9/work
+space/pipeline/tmp/maAfterBAN15.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN16.png, id=1334, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN16.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN16.png> [173 </home/nag9/work
+space/pipeline/tmp/maAfterBAN16.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN17.png, id=1339, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN17.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN17.png> [174 </home/nag9/work
+space/pipeline/tmp/maAfterBAN17.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN18.png, id=1345, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN18.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN18.png> [175 </home/nag9/work
+space/pipeline/tmp/maAfterBAN18.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN19.png, id=1350, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN19.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN19.png> [176 </home/nag9/work
+space/pipeline/tmp/maAfterBAN19.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN20.png, id=1355, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN20.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN20.png> [177 </home/nag9/work
+space/pipeline/tmp/maAfterBAN20.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN21.png, id=1360, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN21.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN21.png> [178 </home/nag9/work
+space/pipeline/tmp/maAfterBAN21.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN22.png, id=1365, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN22.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN22.png> [179 </home/nag9/work
+space/pipeline/tmp/maAfterBAN22.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN23.png, id=1370, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN23.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN23.png> [180 </home/nag9/work
+space/pipeline/tmp/maAfterBAN23.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN24.png, id=1376, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN24.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN24.png> [181 </home/nag9/work
+space/pipeline/tmp/maAfterBAN24.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN25.png, id=1381, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN25.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN25.png> [182 </home/nag9/work
+space/pipeline/tmp/maAfterBAN25.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN26.png, id=1386, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN26.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN26.png> [183 </home/nag9/work
+space/pipeline/tmp/maAfterBAN26.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN27.png, id=1391, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN27.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN27.png> [184 </home/nag9/work
+space/pipeline/tmp/maAfterBAN27.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN28.png, id=1396, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN28.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN28.png> [185 </home/nag9/work
+space/pipeline/tmp/maAfterBAN28.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN29.png, id=1401, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN29.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN29.png> [186 </home/nag9/work
+space/pipeline/tmp/maAfterBAN29.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN30.png, id=1407, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN30.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN30.png> [187 </home/nag9/work
+space/pipeline/tmp/maAfterBAN30.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN31.png, id=1412, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN31.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN31.png> [188 </home/nag9/work
+space/pipeline/tmp/maAfterBAN31.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN32.png, id=1417, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN32.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN32.png> [189 </home/nag9/work
+space/pipeline/tmp/maAfterBAN32.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN33.png, id=1422, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN33.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN33.png> [190 </home/nag9/work
+space/pipeline/tmp/maAfterBAN33.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN34.png, id=1427, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN34.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN34.png> [191 </home/nag9/work
+space/pipeline/tmp/maAfterBAN34.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN35.png, id=1432, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN35.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN35.png> [192 </home/nag9/work
+space/pipeline/tmp/maAfterBAN35.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN36.png, id=1438, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN36.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN36.png> [193 </home/nag9/work
+space/pipeline/tmp/maAfterBAN36.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN37.png, id=1443, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN37.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN37.png> [194 </home/nag9/work
+space/pipeline/tmp/maAfterBAN37.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN38.png, id=1448, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN38.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN38.png> [195 </home/nag9/work
+space/pipeline/tmp/maAfterBAN38.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN39.png, id=1453, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN39.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN39.png> [196 </home/nag9/work
+space/pipeline/tmp/maAfterBAN39.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN40.png, id=1458, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN40.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN40.png> [197 </home/nag9/work
+space/pipeline/tmp/maAfterBAN40.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN41.png, id=1463, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN41.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN41.png> [198 </home/nag9/work
+space/pipeline/tmp/maAfterBAN41.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN42.png, id=1469, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN42.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN42.png> [199 </home/nag9/work
+space/pipeline/tmp/maAfterBAN42.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN43.png, id=1474, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN43.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN43.png> [200 </home/nag9/work
+space/pipeline/tmp/maAfterBAN43.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN44.png, id=1479, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN44.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN44.png> [201 </home/nag9/work
+space/pipeline/tmp/maAfterBAN44.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN45.png, id=1484, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN45.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN45.png> [202 </home/nag9/work
+space/pipeline/tmp/maAfterBAN45.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN46.png, id=1489, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN46.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN46.png> [203 </home/nag9/work
+space/pipeline/tmp/maAfterBAN46.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN47.png, id=1494, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN47.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN47.png> [204 </home/nag9/work
+space/pipeline/tmp/maAfterBAN47.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN48.png, id=1500, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN48.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN48.png> [205 </home/nag9/work
+space/pipeline/tmp/maAfterBAN48.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN49.png, id=1505, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN49.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN49.png> [206 </home/nag9/work
+space/pipeline/tmp/maAfterBAN49.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN50.png, id=1510, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN50.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN50.png> [207 </home/nag9/work
+space/pipeline/tmp/maAfterBAN50.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN51.png, id=1515, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN51.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN51.png> [208 </home/nag9/work
+space/pipeline/tmp/maAfterBAN51.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN52.png, id=1520, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN52.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN52.png> [209 </home/nag9/work
+space/pipeline/tmp/maAfterBAN52.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN53.png, id=1525, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN53.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN53.png> [210 </home/nag9/work
+space/pipeline/tmp/maAfterBAN53.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN54.png, id=1531, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN54.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN54.png> [211 </home/nag9/work
+space/pipeline/tmp/maAfterBAN54.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN55.png, id=1536, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN55.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN55.png> [212 </home/nag9/work
+space/pipeline/tmp/maAfterBAN55.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN56.png, id=1541, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN56.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN56.png> [213 </home/nag9/work
+space/pipeline/tmp/maAfterBAN56.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN57.png, id=1546, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN57.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN57.png> [214 </home/nag9/work
+space/pipeline/tmp/maAfterBAN57.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN58.png, id=1551, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN58.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN58.png> [215 </home/nag9/work
+space/pipeline/tmp/maAfterBAN58.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN59.png, id=1556, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN59.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN59.png> [216 </home/nag9/work
+space/pipeline/tmp/maAfterBAN59.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN60.png, id=1562, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN60.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN60.png> [217 </home/nag9/work
+space/pipeline/tmp/maAfterBAN60.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN61.png, id=1567, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN61.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN61.png> [218 </home/nag9/work
+space/pipeline/tmp/maAfterBAN61.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN62.png, id=1572, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN62.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN62.png> [219 </home/nag9/work
+space/pipeline/tmp/maAfterBAN62.png (PNG copy)>]
+</home/nag9/workspace/pipeline/tmp/maAfterBAN63.png, id=1577, 505.89pt x 505.89
+pt>
+File: /home/nag9/workspace/pipeline/tmp/maAfterBAN63.png Graphic file (type png
+)
+ <use /home/nag9/workspace/pipeline/tmp/maAfterBAN63.png> [220 </home/nag9/work
+space/pipeline/tmp/maAfterBAN63.png (PNG copy)>] [221] (./preprocessing.aux) ) 
+Here is how much of TeX's memory you used:
+ 7716 strings out of 495061
+ 138718 string characters out of 1182621
+ 172126 words of memory out of 3000000
+ 10098 multiletter control sequences out of 15000+50000
+ 40018 words of font info for 90 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 38i,6n,36p,387b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
+<
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
+texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+r8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsltt10.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on preprocessing.pdf (222 pages, 33177657 bytes).
+PDF statistics:
+ 1710 PDF objects out of 1728 (max. 8388607)
+ 432 named destinations out of 1000 (max. 500000)
+ 1074 words of extra memory for PDF output out of 10000 (max. 10000000)
+

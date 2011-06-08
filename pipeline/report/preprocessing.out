@@ -1,0 +1,11 @@
+\BOOKMARK [1][-]{section.1}{Initialization}{}
+\BOOKMARK [2][-]{subsection.1.1}{Parameters and libraries}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{Loading raw data}{section.1}
+\BOOKMARK [1][-]{section.2}{Background correction}{}
+\BOOKMARK [2][-]{subsection.2.1}{Calculations}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Diagnostic MA plots}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{Boxplot}{section.2}
+\BOOKMARK [1][-]{section.3}{Within array normalization}{}
+\BOOKMARK [2][-]{subsection.3.1}{Calculation}{section.3}
+\BOOKMARK [2][-]{subsection.3.2}{Diagnostic MA plots}{section.3}
+\BOOKMARK [1][-]{section.4}{Between array normalization}{}

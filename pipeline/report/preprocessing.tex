@@ -1,0 +1,2025 @@
+\documentclass[titlepage]{article}
+
+%Set includes and layout constraints
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{vmargin}
+\usepackage{subfigure}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+
+% Keep last
+\usepackage{hyperref}
+
+\setpapersize{USletter}
+\setmarginsrb{1in}{1in}{1in}{1in}{12pt}{0mm}{0pt}{0mm}
+
+\usepackage{Sweave}
+\begin{document}
+\author{nag9}
+\title{Schmid Lab Microarray Pipeline}
+\date{\today}
+
+\maketitle
+\tableofcontents
+\listoffigures
+\pagebreak
+
+\section{Initialization}
+This document contains the output of the Schmid lab's microarray pipeline, an 
+R/Bioconductor based platform for microarray prepossessing. This pipeline takes 
+the source code and documentation from CARMAweb and customizes it for our 
+purposes. For questions regarding this program, email nicholas.gillum@duke.edu.
+
+\subsection{Parameters and libraries}
+\begin{Schunk}
+\begin{Sinput}
+> start_time <- Sys.time()
+> library(limma)
+> library(maDB)
+> library(RColorBrewer)
+> library("yaml")
+> config <- yaml.load_file("config/config.yaml")
+> source(paste(config$files$library, "/pipeline_utils.R", sep = ""))
+> source(paste(config$files$library, "/latex_utils.R", sep = ""))
+\end{Sinput}
+\end{Schunk}
+
+\subsection{Loading raw data}
+This section first loads the raw data into memory and then
+intitalizes the appropriate data structures using limma. Finally, it
+removes all control probes. 
+\begin{Schunk}
+\begin{Sinput}
+> targets <- readTargets(config$files$metadata)
+> targets$FileName <- gsub(" ", "", targets$FileName)
+> Slides.raw <- read.maimages(files = targets$FileName, source = getType(config), 
++     path = config$files$rawDir, names = targets$Name, verbose = TRUE)
+\end{Sinput}
+\begin{Soutput}
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810006_S01_GE2-v5_95_Feb07_1_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810006_S01_GE2-v5_95_Feb07_2_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810009_S01_GE2-v5_95_Feb07_2_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810009_S01_GE2-v5_95_Feb07_1_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810011_S01_GE2-v5_95_Feb07_2_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810011_S01_GE2-v5_95_Feb07_1_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810007_S01_GE2-v5_95_Feb07_1_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810007_S01_GE2-v5_95_Feb07_2_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810009_S01_GE2-v5_95_Feb07_2_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810009_S01_GE2-v5_95_Feb07_1_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810005_S01_GE2-v5_95_Feb07_1_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810005_S01_GE2-v5_95_Feb07_2_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810008_S01_GE2-v5_95_Feb07_1_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810008_S01_GE2-v5_95_Feb07_2_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810007_S01_GE2-v5_95_Feb07_1_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810007_S01_GE2-v5_95_Feb07_2_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810005_S01_GE2-v5_95_Feb07_1_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810005_S01_GE2-v5_95_Feb07_2_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810010_S01_GE2-v5_95_Feb07_2_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810010_S01_GE2-v5_95_Feb07_1_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810009_S01_GE2-v5_95_Feb07_2_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810009_S01_GE2-v5_95_Feb07_1_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810011_S01_GE2-v5_95_Feb07_2_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810011_S01_GE2-v5_95_Feb07_1_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810004_S01_GE2-v5_95_Feb07_1_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810004_S01_GE2-v5_95_Feb07_2_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810008_S01_GE2-v5_95_Feb07_1_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810008_S01_GE2-v5_95_Feb07_2_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810004_S01_GE2-v5_95_Feb07_1_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810004_S01_GE2-v5_95_Feb07_2_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810008_S01_GE2-v5_95_Feb07_1_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810008_S01_GE2-v5_95_Feb07_2_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810006_S01_GE2-v5_95_Feb07_1_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810006_S01_GE2-v5_95_Feb07_2_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810007_S01_GE2-v5_95_Feb07_1_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810007_S01_GE2-v5_95_Feb07_2_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810007_S01_GE2-v5_95_Feb07_1_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810007_S01_GE2-v5_95_Feb07_2_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810011_S01_GE2-v5_95_Feb07_2_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810011_S01_GE2-v5_95_Feb07_1_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810006_S01_GE2-v5_95_Feb07_1_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810006_S01_GE2-v5_95_Feb07_2_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810005_S01_GE2-v5_95_Feb07_1_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810005_S01_GE2-v5_95_Feb07_2_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810010_S01_GE2-v5_95_Feb07_2_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810010_S01_GE2-v5_95_Feb07_1_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810004_S01_GE2-v5_95_Feb07_1_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810004_S01_GE2-v5_95_Feb07_2_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810006_S01_GE2-v5_95_Feb07_1_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810006_S01_GE2-v5_95_Feb07_2_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810008_S01_GE2-v5_95_Feb07_1_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810008_S01_GE2-v5_95_Feb07_2_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810009_S01_GE2-v5_95_Feb07_2_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810009_S01_GE2-v5_95_Feb07_1_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810010_S01_GE2-v5_95_Feb07_2_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810010_S01_GE2-v5_95_Feb07_1_2.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810005_S01_GE2-v5_95_Feb07_1_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810005_S01_GE2-v5_95_Feb07_2_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810004_S01_GE2-v5_95_Feb07_1_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810004_S01_GE2-v5_95_Feb07_2_3.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810011_S01_GE2-v5_95_Feb07_1_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810011_S01_GE2-v5_95_Feb07_2_1.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810010_S01_GE2-v5_95_Feb07_2_4.txt 
+Read /home/nag9/Desktop/microarray/2606/US22502698_253010810010_S01_GE2-v5_95_Feb07_1_4.txt 
+\end{Soutput}
+\begin{Sinput}
+> Slides.raw$targets <- targets
+> config$count <- length(targets$FileName)
+> config$targets <- targets
+> config$vsn <- (config$algorithms$betweenArray == "vsn")
+\end{Sinput}
+\end{Schunk}
+
+\section{Background correction}
+\subsection{Calculations}
+The following code draws a plot of the raw data for each microarray.  Specifically, it draws an MA plot of the regulation values (M values,  differential expression) of all the genes against their average  expression (A). The red and green lines in the plot represent the  mean and median, respectively. The turquoise line in the plot  represents the lowess fit line.
+
+\begin{Schunk}
+\begin{Sinput}
+> Slides.raw <- backgroundCorrect(Slides.raw, method = config$algorithms$bgCorrection)
+\end{Sinput}
+\begin{Soutput}
+Green channel
+Corrected array 1 
+Corrected array 2 
+Corrected array 3 
+Corrected array 4 
+Corrected array 5 
+Corrected array 6 
+Corrected array 7 
+Corrected array 8 
+Corrected array 9 
+Corrected array 10 
+Corrected array 11 
+Corrected array 12 
+Corrected array 13 
+Corrected array 14 
+Corrected array 15 
+Corrected array 16 
+Corrected array 17 
+Corrected array 18 
+Corrected array 19 
+Corrected array 20 
+Corrected array 21 
+Corrected array 22 
+Corrected array 23 
+Corrected array 24 
+Corrected array 25 
+Corrected array 26 
+Corrected array 27 
+Corrected array 28 
+Corrected array 29 
+Corrected array 30 
+Corrected array 31 
+Corrected array 32 
+Corrected array 33 
+Corrected array 34 
+Corrected array 35 
+Corrected array 36 
+Corrected array 37 
+Corrected array 38 
+Corrected array 39 
+Corrected array 40 
+Corrected array 41 
+Corrected array 42 
+Corrected array 43 
+Corrected array 44 
+Corrected array 45 
+Corrected array 46 
+Corrected array 47 
+Corrected array 48 
+Corrected array 49 
+Corrected array 50 
+Corrected array 51 
+Corrected array 52 
+Corrected array 53 
+Corrected array 54 
+Corrected array 55 
+Corrected array 56 
+Corrected array 57 
+Corrected array 58 
+Corrected array 59 
+Corrected array 60 
+Corrected array 61 
+Corrected array 62 
+Corrected array 63 
+Corrected array 64 
+Red channel
+Corrected array 1 
+Corrected array 2 
+Corrected array 3 
+Corrected array 4 
+Corrected array 5 
+Corrected array 6 
+Corrected array 7 
+Corrected array 8 
+Corrected array 9 
+Corrected array 10 
+Corrected array 11 
+Corrected array 12 
+Corrected array 13 
+Corrected array 14 
+Corrected array 15 
+Corrected array 16 
+Corrected array 17 
+Corrected array 18 
+Corrected array 19 
+Corrected array 20 
+Corrected array 21 
+Corrected array 22 
+Corrected array 23 
+Corrected array 24 
+Corrected array 25 
+Corrected array 26 
+Corrected array 27 
+Corrected array 28 
+Corrected array 29 
+Corrected array 30 
+Corrected array 31 
+Corrected array 32 
+Corrected array 33 
+Corrected array 34 
+Corrected array 35 
+Corrected array 36 
+Corrected array 37 
+Corrected array 38 
+Corrected array 39 
+Corrected array 40 
+Corrected array 41 
+Corrected array 42 
+Corrected array 43 
+Corrected array 44 
+Corrected array 45 
+Corrected array 46 
+Corrected array 47 
+Corrected array 48 
+Corrected array 49 
+Corrected array 50 
+Corrected array 51 
+Corrected array 52 
+Corrected array 53 
+Corrected array 54 
+Corrected array 55 
+Corrected array 56 
+Corrected array 57 
+Corrected array 58 
+Corrected array 59 
+Corrected array 60 
+Corrected array 61 
+Corrected array 62 
+Corrected array 63 
+Corrected array 64 
+\end{Soutput}
+\begin{Sinput}
+> Dummy <- newMadbSet(Slides.raw)
+\end{Sinput}
+\begin{Soutput}
+Converting a limma RGList into a MadbSet...
+Inserting available annotation into the slot @genes
+
+Inserting available annotation into the slot @genes
+\end{Soutput}
+\begin{Sinput}
+> if (!config$quiet$backgroundCorrect) {
++     for (i in 0:(config$count - 1)) {
++         FILENAME <- paste(config$files$tmpDir, "/maAfterBg", 
++             i, ".png", sep = "")
++         png(FILENAME, width = 7, height = 7, units = "in", res = 300)
++         drawMA(Dummy, r = 1 + 2 * i, g = 2 + 2 * i, colramp = colorRampPalette(rev(brewer.pal(9, 
++             "Blues")[2:9])))
++         dev.off()
++     }
++ }
+\end{Sinput}
+\begin{Soutput}
+Generating an MA plot of  -40_ura3_A Red vs -40_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_ura3_A_DF Red vs -40_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_ura3_B Red vs -40_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_ura3_B_DF Red vs -40_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_A Red vs -20_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_A_DF Red vs -20_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_B Red vs -20_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_B_DF Red vs -20_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_A Red vs 0_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_A_DF Red vs 0_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_B Red vs 0_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_B_DF Red vs 0_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_A Red vs 10_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_A_DF Red vs 10_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_B Red vs 10_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_B_DF Red vs 10_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_A Red vs 20_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_A_DF Red vs 20_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B Red vs 20_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B_DF Red vs 20_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B.1 Red vs 20_ura3_B.1 Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B.1_DF Red vs 20_ura3_B.1_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_A Red vs 40_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_A_DF Red vs 40_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_B Red vs 40_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_B_DF Red vs 40_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_A Red vs 60_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_A_DF Red vs 60_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_B Red vs 60_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_B_DF Red vs 60_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_A Red vs 80_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_A_DF Red vs 80_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_B Red vs 80_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_B_DF Red vs 80_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_A Red vs -40_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_A_DF Red vs -40_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_B Red vs -40_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_B_DF Red vs -40_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_A Red vs -20_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_A_DF Red vs -20_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_B Red vs -20_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_B_DF Red vs -20_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_A Red vs 0_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_A_DF Red vs 0_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_B Red vs 0_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_B_DF Red vs 0_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_A Red vs 10_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_A_DF Red vs 10_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_B Red vs 10_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_B_DF Red vs 10_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_0258_A Red vs 20_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_0258_A_DF Red vs 20_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_A Red vs 40_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_A_DF Red vs 40_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_B Red vs 40_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_B_DF Red vs 40_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_A Red vs 60_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_A_DF Red vs 60_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_B Red vs 60_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_B_DF Red vs 60_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_A_DF Red vs 80_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_A Red vs 80_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_B Red vs 80_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_B_DF Red vs 80_0258_B_DF Green 
+building a dummy weights matrix... 
+\end{Soutput}
+\end{Schunk}
+\pagebreak
+\subsection{Diagnostic MA plots}
+The following MA plots show the data after background correction.
+
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg0.png}
+\caption{MA plot of  after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg1.png}
+\caption{MA plot of -40\_ura3\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg2.png}
+\caption{MA plot of -40\_ura3\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg3.png}
+\caption{MA plot of -40\_ura3\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg4.png}
+\caption{MA plot of -40\_ura3\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg5.png}
+\caption{MA plot of -20\_ura3\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg6.png}
+\caption{MA plot of -20\_ura3\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg7.png}
+\caption{MA plot of -20\_ura3\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg8.png}
+\caption{MA plot of -20\_ura3\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg9.png}
+\caption{MA plot of 0\_ura3\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg10.png}
+\caption{MA plot of 0\_ura3\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg11.png}
+\caption{MA plot of 0\_ura3\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg12.png}
+\caption{MA plot of 0\_ura3\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg13.png}
+\caption{MA plot of 10\_ura3\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg14.png}
+\caption{MA plot of 10\_ura3\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg15.png}
+\caption{MA plot of 10\_ura3\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg16.png}
+\caption{MA plot of 10\_ura3\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg17.png}
+\caption{MA plot of 20\_ura3\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg18.png}
+\caption{MA plot of 20\_ura3\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg19.png}
+\caption{MA plot of 20\_ura3\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg20.png}
+\caption{MA plot of 20\_ura3\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg21.png}
+\caption{MA plot of 20\_ura3\_B.1 after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg22.png}
+\caption{MA plot of 20\_ura3\_B.1\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg23.png}
+\caption{MA plot of 40\_ura3\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg24.png}
+\caption{MA plot of 40\_ura3\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg25.png}
+\caption{MA plot of 40\_ura3\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg26.png}
+\caption{MA plot of 40\_ura3\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg27.png}
+\caption{MA plot of 60\_ura3\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg28.png}
+\caption{MA plot of 60\_ura3\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg29.png}
+\caption{MA plot of 60\_ura3\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg30.png}
+\caption{MA plot of 60\_ura3\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg31.png}
+\caption{MA plot of 80\_ura3\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg32.png}
+\caption{MA plot of 80\_ura3\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg33.png}
+\caption{MA plot of 80\_ura3\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg34.png}
+\caption{MA plot of 80\_ura3\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg35.png}
+\caption{MA plot of -40\_0258\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg36.png}
+\caption{MA plot of -40\_0258\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg37.png}
+\caption{MA plot of -40\_0258\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg38.png}
+\caption{MA plot of -40\_0258\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg39.png}
+\caption{MA plot of -20\_0258\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg40.png}
+\caption{MA plot of -20\_0258\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg41.png}
+\caption{MA plot of -20\_0258\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg42.png}
+\caption{MA plot of -20\_0258\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg43.png}
+\caption{MA plot of 0\_0258\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg44.png}
+\caption{MA plot of 0\_0258\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg45.png}
+\caption{MA plot of 0\_0258\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg46.png}
+\caption{MA plot of 0\_0258\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg47.png}
+\caption{MA plot of 10\_0258\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg48.png}
+\caption{MA plot of 10\_0258\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg49.png}
+\caption{MA plot of 10\_0258\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg50.png}
+\caption{MA plot of 10\_0258\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg51.png}
+\caption{MA plot of 20\_0258\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg52.png}
+\caption{MA plot of 20\_0258\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg53.png}
+\caption{MA plot of 40\_0258\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg54.png}
+\caption{MA plot of 40\_0258\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg55.png}
+\caption{MA plot of 40\_0258\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg56.png}
+\caption{MA plot of 40\_0258\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg57.png}
+\caption{MA plot of 60\_0258\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg58.png}
+\caption{MA plot of 60\_0258\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg59.png}
+\caption{MA plot of 60\_0258\_B after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg60.png}
+\caption{MA plot of 60\_0258\_B\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg61.png}
+\caption{MA plot of 80\_0258\_A\_DF after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg62.png}
+\caption{MA plot of 80\_0258\_A after background correction}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBg63.png}
+\caption{MA plot of 80\_0258\_B after background correction}
+\end{figure}\pagebreak
+
+\subsection{Boxplot}
+\begin{Schunk}
+\begin{Sinput}
+> if (!config$vsn) {
++     FILENAME <- paste(config$files$tmpDir, "/", "boxPlot1.png", 
++         sep = "")
++     png(FILENAME, width = 7, height = 7, units = "in", res = 300)
++     drawBoxplot(Dummy, log2.transform = TRUE)
++     dev.off()
++ }
+\end{Sinput}
+\begin{Soutput}
+null device 
+          1 
+\end{Soutput}
+\end{Schunk}
+\begin{figure}[htb!]
+\centering
+\includegraphics{/home/nag9/workspace/pipeline/tmp/boxPlot1.png}
+\caption{Boxplots of the signal intensities of each signal channel of the microarrays. Raw data after background correction.}\end{figure}
+\pagebreak
+
+
+\section{Within array normalization}
+\subsection{Calculation}
+In this section, we normalize within arrays using the loess algorithm. 
+
+\begin{Schunk}
+\begin{Sinput}
+> if (!config$vsn) {
++     Slides.norm <- normalizeWithinArrays(Slides.raw, layout = Slides.raw$printer, 
++         method = config$algorithms$withinArray)
++     rm(Slides.raw)
++     gc()
++     if (!config$quiet$backgroundCorrect) {
++         Dummy <- newMadbSet(Slides.norm)
++         for (i in 0:(config$count - 1)) {
++             FILENAME <- paste(config$files$tmpDir, "/maAfterWAN", 
++                 i, ".png", sep = "")
++             png(FILENAME, width = 7, height = 7, units = "in", 
++                 res = 300)
++             drawMA(Dummy, r = 1 + 2 * i, g = 2 + 2 * i, colramp = colorRampPalette(rev(brewer.pal(9, 
++                 "Blues")[2:9])))
++             dev.off()
++         }
++     }
++ } else {
++     Slides.norm <- Slides.raw
++     rm(Slides.raw)
++     g <- gc()
++     cat("No within array normalization was performed")
++ }
+\end{Sinput}
+\begin{Soutput}
+Converting a limma MAList into a MadbSet...
+Inserting available annotation into the slot @genes
+
+Inserting available annotation into the slot @genes
+
+Generating an MA plot of  -40_ura3_A Red vs -40_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_ura3_A_DF Red vs -40_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_ura3_B Red vs -40_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_ura3_B_DF Red vs -40_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_A Red vs -20_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_A_DF Red vs -20_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_B Red vs -20_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_B_DF Red vs -20_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_A Red vs 0_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_A_DF Red vs 0_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_B Red vs 0_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_B_DF Red vs 0_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_A Red vs 10_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_A_DF Red vs 10_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_B Red vs 10_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_B_DF Red vs 10_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_A Red vs 20_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_A_DF Red vs 20_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B Red vs 20_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B_DF Red vs 20_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B.1 Red vs 20_ura3_B.1 Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B.1_DF Red vs 20_ura3_B.1_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_A Red vs 40_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_A_DF Red vs 40_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_B Red vs 40_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_B_DF Red vs 40_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_A Red vs 60_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_A_DF Red vs 60_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_B Red vs 60_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_B_DF Red vs 60_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_A Red vs 80_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_A_DF Red vs 80_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_B Red vs 80_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_B_DF Red vs 80_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_A Red vs -40_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_A_DF Red vs -40_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_B Red vs -40_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_B_DF Red vs -40_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_A Red vs -20_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_A_DF Red vs -20_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_B Red vs -20_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_B_DF Red vs -20_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_A Red vs 0_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_A_DF Red vs 0_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_B Red vs 0_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_B_DF Red vs 0_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_A Red vs 10_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_A_DF Red vs 10_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_B Red vs 10_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_B_DF Red vs 10_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_0258_A Red vs 20_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_0258_A_DF Red vs 20_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_A Red vs 40_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_A_DF Red vs 40_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_B Red vs 40_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_B_DF Red vs 40_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_A Red vs 60_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_A_DF Red vs 60_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_B Red vs 60_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_B_DF Red vs 60_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_A_DF Red vs 80_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_A Red vs 80_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_B Red vs 80_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_B_DF Red vs 80_0258_B_DF Green 
+building a dummy weights matrix... 
+\end{Soutput}
+\end{Schunk}
+\pagebreak
+\subsection{Diagnostic MA plots}
+The following MA plots show the data after with array normalization.
+
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN0.png}
+\caption{-40\_ura3\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN1.png}
+\caption{-40\_ura3\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN2.png}
+\caption{-40\_ura3\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN3.png}
+\caption{-40\_ura3\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN4.png}
+\caption{-20\_ura3\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN5.png}
+\caption{-20\_ura3\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN6.png}
+\caption{-20\_ura3\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN7.png}
+\caption{-20\_ura3\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN8.png}
+\caption{0\_ura3\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN9.png}
+\caption{0\_ura3\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN10.png}
+\caption{0\_ura3\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN11.png}
+\caption{0\_ura3\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN12.png}
+\caption{10\_ura3\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN13.png}
+\caption{10\_ura3\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN14.png}
+\caption{10\_ura3\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN15.png}
+\caption{10\_ura3\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN16.png}
+\caption{20\_ura3\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN17.png}
+\caption{20\_ura3\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN18.png}
+\caption{20\_ura3\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN19.png}
+\caption{20\_ura3\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN20.png}
+\caption{20\_ura3\_B.1 after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN21.png}
+\caption{20\_ura3\_B.1\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN22.png}
+\caption{40\_ura3\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN23.png}
+\caption{40\_ura3\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN24.png}
+\caption{40\_ura3\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN25.png}
+\caption{40\_ura3\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN26.png}
+\caption{60\_ura3\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN27.png}
+\caption{60\_ura3\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN28.png}
+\caption{60\_ura3\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN29.png}
+\caption{60\_ura3\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN30.png}
+\caption{80\_ura3\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN31.png}
+\caption{80\_ura3\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN32.png}
+\caption{80\_ura3\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN33.png}
+\caption{80\_ura3\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN34.png}
+\caption{-40\_0258\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN35.png}
+\caption{-40\_0258\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN36.png}
+\caption{-40\_0258\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN37.png}
+\caption{-40\_0258\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN38.png}
+\caption{-20\_0258\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN39.png}
+\caption{-20\_0258\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN40.png}
+\caption{-20\_0258\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN41.png}
+\caption{-20\_0258\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN42.png}
+\caption{0\_0258\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN43.png}
+\caption{0\_0258\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN44.png}
+\caption{0\_0258\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN45.png}
+\caption{0\_0258\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN46.png}
+\caption{10\_0258\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN47.png}
+\caption{10\_0258\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN48.png}
+\caption{10\_0258\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN49.png}
+\caption{10\_0258\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN50.png}
+\caption{20\_0258\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN51.png}
+\caption{20\_0258\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN52.png}
+\caption{40\_0258\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN53.png}
+\caption{40\_0258\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN54.png}
+\caption{40\_0258\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN55.png}
+\caption{40\_0258\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN56.png}
+\caption{60\_0258\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN57.png}
+\caption{60\_0258\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN58.png}
+\caption{60\_0258\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN59.png}
+\caption{60\_0258\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN60.png}
+\caption{80\_0258\_A\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN61.png}
+\caption{80\_0258\_A after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN62.png}
+\caption{80\_0258\_B after within array normalization by loess}
+ \end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterWAN63.png}
+\caption{80\_0258\_B\_DF after within array normalization by loess}
+ \end{figure}\pagebreak
+
+\begin{Schunk}
+\begin{Sinput}
+> if (!config$vsn) {
++     Dummy <- newMadbSet(Slides.norm)
++     FILENAME <- paste(config$files$tmpDir, "/", "boxPlot2.png", 
++         sep = "")
++     png(FILENAME, width = 7, height = 7, units = "in", res = 300)
++     drawBoxplot(Dummy, log2.transform = TRUE)
++     dev.off()
++ }
+\end{Sinput}
+\begin{Soutput}
+Converting a limma MAList into a MadbSet...
+Inserting available annotation into the slot @genes
+
+Inserting available annotation into the slot @genes
+
+null device 
+          1 
+\end{Soutput}
+\end{Schunk}
+\begin{figure}[htb!]
+\centering
+\includegraphics{/home/nag9/workspace/pipeline/tmp/boxPlot2.png}
+ \caption{Boxplots of the signal intensities of each signal channel of the microarrays after within array normalization.}\end{figure}\pagebreak
+
+\section{Between array normalization}
+In this section, first draw a diagnostic histogram of the within array 
+normalized data. In the case of the vsn algorithm, it draws a histogram
+of the raw data.
+\begin{Schunk}
+\begin{Sinput}
+> Dummy <- newMadbSet(Slides.norm)
+\end{Sinput}
+\begin{Soutput}
+Converting a limma MAList into a MadbSet...
+Inserting available annotation into the slot @genes
+
+Inserting available annotation into the slot @genes
+\end{Soutput}
+\begin{Sinput}
+> HIST_B = paste(config$files$tmpDir, "/", "histBeforeBAN.png", 
++     sep = "")
+> png(HIST_B, width = 7, height = 7, units = "in", res = 300)
+> drawHistogram(Dummy)
+\end{Sinput}
+\begin{Soutput}
+building a dummy weights matrix... 
+
+calculating histograms 
+\end{Soutput}
+\begin{Sinput}
+> dev.off()
+\end{Sinput}
+\begin{Soutput}
+null device 
+          1 
+\end{Soutput}
+\end{Schunk}
+We then normalize between arrays using the quantile 
+algorithm and draw a set of diagnostic MA  plots. 
+\begin{Schunk}
+\begin{Sinput}
+> Slides.norm <- normalizeBetweenArrays(Slides.norm, method = config$algorithms$betweenArray)
+> Dummy <- newMadbSet(Slides.norm)
+\end{Sinput}
+\begin{Soutput}
+Converting a limma MAList into a MadbSet...
+Inserting available annotation into the slot @genes
+
+Inserting available annotation into the slot @genes
+\end{Soutput}
+\begin{Sinput}
+> HIST_A = paste(config$files$tmpDir, "/", "histAfterBAN.png", 
++     sep = "")
+> png(HIST_A, width = 7, height = 7, units = "in", res = 300)
+> drawHistogram(Dummy)
+\end{Sinput}
+\begin{Soutput}
+building a dummy weights matrix... 
+
+calculating histograms 
+\end{Soutput}
+\begin{Sinput}
+> dev.off()
+\end{Sinput}
+\begin{Soutput}
+null device 
+          1 
+\end{Soutput}
+\begin{Sinput}
+> for (i in 0:(config$count - 1)) {
++     FILENAME <- paste(config$files$tmpDir, "/maAfterBAN", i, 
++         ".png", sep = "")
++     png(FILENAME, width = 7, height = 7, units = "in", res = 300)
++     drawMA(Dummy, r = 1 + 2 * i, g = 2 + 2 * i, colramp = colorRampPalette(rev(brewer.pal(9, 
++         "Blues")[2:9])))
++     dev.off()
++ }
+\end{Sinput}
+\begin{Soutput}
+Generating an MA plot of  -40_ura3_A Red vs -40_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_ura3_A_DF Red vs -40_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_ura3_B Red vs -40_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_ura3_B_DF Red vs -40_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_A Red vs -20_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_A_DF Red vs -20_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_B Red vs -20_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_ura3_B_DF Red vs -20_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_A Red vs 0_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_A_DF Red vs 0_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_B Red vs 0_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_ura3_B_DF Red vs 0_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_A Red vs 10_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_A_DF Red vs 10_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_B Red vs 10_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_ura3_B_DF Red vs 10_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_A Red vs 20_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_A_DF Red vs 20_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B Red vs 20_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B_DF Red vs 20_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B.1 Red vs 20_ura3_B.1 Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_ura3_B.1_DF Red vs 20_ura3_B.1_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_A Red vs 40_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_A_DF Red vs 40_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_B Red vs 40_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_ura3_B_DF Red vs 40_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_A Red vs 60_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_A_DF Red vs 60_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_B Red vs 60_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_ura3_B_DF Red vs 60_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_A Red vs 80_ura3_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_A_DF Red vs 80_ura3_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_B Red vs 80_ura3_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_ura3_B_DF Red vs 80_ura3_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_A Red vs -40_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_A_DF Red vs -40_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_B Red vs -40_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -40_0258_B_DF Red vs -40_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_A Red vs -20_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_A_DF Red vs -20_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_B Red vs -20_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  -20_0258_B_DF Red vs -20_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_A Red vs 0_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_A_DF Red vs 0_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_B Red vs 0_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  0_0258_B_DF Red vs 0_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_A Red vs 10_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_A_DF Red vs 10_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_B Red vs 10_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  10_0258_B_DF Red vs 10_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_0258_A Red vs 20_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  20_0258_A_DF Red vs 20_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_A Red vs 40_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_A_DF Red vs 40_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_B Red vs 40_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  40_0258_B_DF Red vs 40_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_A Red vs 60_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_A_DF Red vs 60_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_B Red vs 60_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  60_0258_B_DF Red vs 60_0258_B_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_A_DF Red vs 80_0258_A_DF Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_A Red vs 80_0258_A Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_B Red vs 80_0258_B Green 
+building a dummy weights matrix... 
+
+Generating an MA plot of  80_0258_B_DF Red vs 80_0258_B_DF Green 
+building a dummy weights matrix... 
+\end{Soutput}
+\end{Schunk}
+\begin{figure}[htb!]
+\centering
+\subfigure[Before between array normalization]{
+\includegraphics[width=3.25in]{/home/nag9/workspace/pipeline/tmp/histBeforeBAN.png}}
+\subfigure[After between array normalization]{
+\includegraphics[width=3.25in]{/home/nag9/workspace/pipeline/tmp/histAfterBAN.png}}
+\caption{Histogram of all arrays within this experiment before and after 
+the between array normalization}
+\end{figure}
+\pagebreak
+The quality of the within array normalization process can also be assessed 
+using a boxplot.
+\begin{Schunk}
+\begin{Sinput}
+> Dummy <- newMadbSet(Slides.norm)
+\end{Sinput}
+\begin{Soutput}
+Converting a limma MAList into a MadbSet...
+Inserting available annotation into the slot @genes
+
+Inserting available annotation into the slot @genes
+\end{Soutput}
+\begin{Sinput}
+> BOX3 = paste(config$files$tmpDir, "/", "boxPlot3.png", sep = "")
+> png(BOX3, width = 7, height = 7, units = "in", res = 300)
+> drawBoxplot(Dummy, log2.transform = TRUE)
+> dev.off()
+\end{Sinput}
+\begin{Soutput}
+null device 
+          1 
+\end{Soutput}
+\end{Schunk}
+\begin{figure}[htb!]
+\centering
+\includegraphics{/home/nag9/workspace/pipeline/tmp/boxPlot3.png}
+\end{figure}
+\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN0.png}
+\caption{MA plot of  after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN1.png}
+\caption{MA plot of -40\_ura3\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN2.png}
+\caption{MA plot of -40\_ura3\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN3.png}
+\caption{MA plot of -40\_ura3\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN4.png}
+\caption{MA plot of -40\_ura3\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN5.png}
+\caption{MA plot of -20\_ura3\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN6.png}
+\caption{MA plot of -20\_ura3\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN7.png}
+\caption{MA plot of -20\_ura3\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN8.png}
+\caption{MA plot of -20\_ura3\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN9.png}
+\caption{MA plot of 0\_ura3\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN10.png}
+\caption{MA plot of 0\_ura3\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN11.png}
+\caption{MA plot of 0\_ura3\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN12.png}
+\caption{MA plot of 0\_ura3\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN13.png}
+\caption{MA plot of 10\_ura3\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN14.png}
+\caption{MA plot of 10\_ura3\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN15.png}
+\caption{MA plot of 10\_ura3\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN16.png}
+\caption{MA plot of 10\_ura3\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN17.png}
+\caption{MA plot of 20\_ura3\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN18.png}
+\caption{MA plot of 20\_ura3\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN19.png}
+\caption{MA plot of 20\_ura3\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN20.png}
+\caption{MA plot of 20\_ura3\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN21.png}
+\caption{MA plot of 20\_ura3\_B.1 after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN22.png}
+\caption{MA plot of 20\_ura3\_B.1\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN23.png}
+\caption{MA plot of 40\_ura3\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN24.png}
+\caption{MA plot of 40\_ura3\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN25.png}
+\caption{MA plot of 40\_ura3\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN26.png}
+\caption{MA plot of 40\_ura3\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN27.png}
+\caption{MA plot of 60\_ura3\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN28.png}
+\caption{MA plot of 60\_ura3\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN29.png}
+\caption{MA plot of 60\_ura3\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN30.png}
+\caption{MA plot of 60\_ura3\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN31.png}
+\caption{MA plot of 80\_ura3\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN32.png}
+\caption{MA plot of 80\_ura3\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN33.png}
+\caption{MA plot of 80\_ura3\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN34.png}
+\caption{MA plot of 80\_ura3\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN35.png}
+\caption{MA plot of -40\_0258\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN36.png}
+\caption{MA plot of -40\_0258\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN37.png}
+\caption{MA plot of -40\_0258\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN38.png}
+\caption{MA plot of -40\_0258\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN39.png}
+\caption{MA plot of -20\_0258\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN40.png}
+\caption{MA plot of -20\_0258\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN41.png}
+\caption{MA plot of -20\_0258\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN42.png}
+\caption{MA plot of -20\_0258\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN43.png}
+\caption{MA plot of 0\_0258\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN44.png}
+\caption{MA plot of 0\_0258\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN45.png}
+\caption{MA plot of 0\_0258\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN46.png}
+\caption{MA plot of 0\_0258\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN47.png}
+\caption{MA plot of 10\_0258\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN48.png}
+\caption{MA plot of 10\_0258\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN49.png}
+\caption{MA plot of 10\_0258\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN50.png}
+\caption{MA plot of 10\_0258\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN51.png}
+\caption{MA plot of 20\_0258\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN52.png}
+\caption{MA plot of 20\_0258\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN53.png}
+\caption{MA plot of 40\_0258\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN54.png}
+\caption{MA plot of 40\_0258\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN55.png}
+\caption{MA plot of 40\_0258\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN56.png}
+\caption{MA plot of 40\_0258\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN57.png}
+\caption{MA plot of 60\_0258\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN58.png}
+\caption{MA plot of 60\_0258\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN59.png}
+\caption{MA plot of 60\_0258\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN60.png}
+\caption{MA plot of 60\_0258\_B\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN61.png}
+\caption{MA plot of 80\_0258\_A\_DF after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN62.png}
+\caption{MA plot of 80\_0258\_A after between array normalization by quantile}
+\end{figure}\pagebreak
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=6in]{/home/nag9/workspace/pipeline/tmp/maAfterBAN63.png}
+\caption{MA plot of 80\_0258\_B after between array normalization by quantile}
+\end{figure}\pagebreak
+
+
+\begin{Schunk}
+\begin{Sinput}
+> control_mask <- (Slides.norm$genes$ControlType != 0)
+> Slides.norm <- Slides.norm[!control_mask, ]
+> cat("Removed ", sum(control_mask), " control probes.\n")
+\end{Sinput}
+\begin{Soutput}
+Removed  536  control probes.
+\end{Soutput}
+\begin{Sinput}
+> gene_names <- getUniqueGeneNames(config)
+> cat(length(gene_names), " genes were found. ")
+\end{Sinput}
+\begin{Soutput}
+2410  genes were found. 
+\end{Soutput}
+\end{Schunk}
+All dye swapped columns must be labelled in the metadata file as XXX and XXX\_DF
+\begin{Schunk}
+\begin{Sinput}
+> candidates = getConditionNames(Slides.norm)
+> conditions = getConditions(Slides.norm)
+> dye_swaps = getDyeSwaps(Slides.norm)
+> fwd_mask <- getForwardMask(Slides.norm, conditions)
+> ncols <- length(conditions)
+> nrows <- length(gene_names)
+> output_data <- matrix(rep(-1, nrows * ncols), ncol = ncols)
+> colnames(output_data) <- conditions
+> rownames(output_data) <- gene_names
+> for (i in 1:length(gene_names)) {
++     output_data[i, ] <- divide(gene_names[i], Slides.norm, config, 
++         candidates, conditions, dye_swaps, fwd_mask)
++ }
+> write.table(output_data, file = config$files$output, sep = "\t", 
++     col.names = NA)
+> end_time = Sys.time()
+> cat("Time to generate document: ", end_time - start_time, "\n")
+\end{Sinput}
+\begin{Soutput}
+Time to generate document:  30.34830 
+\end{Soutput}
+\end{Schunk}
+
+\end{document}
+

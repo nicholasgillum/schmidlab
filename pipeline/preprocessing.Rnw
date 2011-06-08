@@ -1,0 +1,219 @@
+\documentclass[titlepage]{article}
+
+%Set includes and layout constraints
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{vmargin}
+\usepackage{subfigure}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+
+% Keep last
+\usepackage{hyperref}
+
+\setpapersize{USletter}
+\setmarginsrb{1in}{1in}{1in}{1in}{12pt}{0mm}{0pt}{0mm}
+
+\begin{document}
+\author{\Sexpr{Sys.getenv("USERNAME")}}
+\title{Schmid Lab Microarray Pipeline}
+\date{\today}
+
+\maketitle
+\tableofcontents
+\listoffigures
+\pagebreak
+
+\section{Initialization}
+This document contains the output of the Schmid lab's microarray pipeline, an 
+R/Bioconductor based platform for microarray prepossessing. This pipeline takes 
+the source code and documentation from CARMAweb and customizes it for our 
+purposes. For questions regarding this program, email nicholas.gillum@duke.edu.
+
+\subsection{Parameters and libraries}
+<<params>>=
+start_time <- Sys.time()
+library(limma)
+library(maDB)
+library(RColorBrewer)
+library('yaml')
+
+config<-yaml.load_file("config/config.yaml")
+source(paste(config$files$library,"/pipeline_utils.R",sep=""))
+source(paste(config$files$library,"/latex_utils.R",sep=""))
+@
+
+\subsection{Loading raw data}
+This section first loads the raw data into memory and then
+intitalizes the appropriate data structures using limma. Finally, it
+removes all control probes. 
+<<load>>=
+
+targets <-readTargets(config$files$metadata)
+targets$FileName <- gsub(" ", "", targets$FileName)
+Slides.raw<-read.maimages(files=targets$FileName,source=getType(config), 
+		path=config$files$rawDir, names=targets$Name, verbose=TRUE)
+Slides.raw$targets <-targets
+
+config$count<-length(targets$FileName)
+config$targets<-targets
+config$vsn<-(config$algorithms$betweenArray=="vsn")
+@
+
+\section{Background correction}
+\subsection{Calculations}
+\Sexpr{getBackgroundText(config)}
+<<backgroundCorrect>>=
+Slides.raw <-backgroundCorrect(Slides.raw, method=config$algorithms$bgCorrection)
+Dummy<-newMadbSet(Slides.raw)
+if(!config$quiet$backgroundCorrect){
+  for(i in 0:(config$count-1)) {
+    FILENAME<-paste(config$files$tmpDir, "/maAfterBg",i, ".png", sep="" )
+    png(FILENAME, width=7, height=7, units="in", res=300)
+    drawMA(Dummy, r=1+2*i, g=2+2*i, 
+		colramp=colorRampPalette(rev(brewer.pal(9,"Blues")[2:9])))
+    dev.off()
+  }
+}
+@
+\pagebreak
+\subsection{Diagnostic MA plots}
+\Sexpr{getBgMaPlotText(config)}
+\Sexpr{getPairedMAFiguresBg(config$files$tmpDir, config)}
+\subsection{Boxplot}
+<<boxplot>>=
+if(!config$vsn) {
+  FILENAME<-paste(config$files$tmpDir, "/", "boxPlot1.png",sep="")
+  png(FILENAME, width=7, height=7, units="in", res=300)
+  drawBoxplot(Dummy, log2.transform = TRUE)
+  dev.off()
+}
+@
+\Sexpr{getBoxplotCommandOne(config)}
+
+\section{Within array normalization}
+\subsection{Calculation}
+\Sexpr{getWithinArrayNormText(config)}
+<<withinArrayNorm>>=
+if(!config$vsn){
+  Slides.norm <- normalizeWithinArrays(Slides.raw, layout=Slides.raw$printer,
+		method=config$algorithms$withinArray)
+  rm(Slides.raw)
+  gc()
+  if(!config$quiet$backgroundCorrect){
+  Dummy<-newMadbSet(Slides.norm)
+    for(i in 0:(config$count -1)) {
+      FILENAME<-paste(config$files$tmpDir, "/maAfterWAN",i, ".png", sep="" )
+      png(FILENAME, width=7, height=7, units="in", res=300)
+      drawMA(Dummy, r=1+2*i, g=2+2*i, 
+			colramp=colorRampPalette(rev(brewer.pal(9,"Blues")[2:9])))
+	  dev.off()
+    }
+  }
+} else {
+	Slides.norm<-Slides.raw
+	rm(Slides.raw)
+	g<-gc()
+	cat("No within array normalization was performed")
+}
+@
+\pagebreak
+\subsection{Diagnostic MA plots}
+\Sexpr{getWanText(config)}
+\Sexpr{getMAFiguresWAN(config$files$tmpDir, config)}
+<<boxplot2>>=
+if(!config$vsn) {
+	Dummy<-newMadbSet(Slides.norm)
+	FILENAME<-paste(config$files$tmpDir, "/", "boxPlot2.png",sep="")
+	png(FILENAME, width=7, height=7, units="in", res=300)
+	drawBoxplot(Dummy, log2.transform = TRUE)
+	dev.off()
+}
+@
+\Sexpr{getBoxplotCommandTwo(config)}
+
+\section{Between array normalization}
+In this section, first draw a diagnostic histogram of the within array 
+normalized data. In the case of the vsn algorithm, it draws a histogram
+of the raw data.
+<<betweenArrayHistB>>=
+Dummy<-newMadbSet(Slides.norm)
+HIST_B=paste(config$files$tmpDir,"/", "histBeforeBAN.png",sep="")
+png(HIST_B, width=7, height=7, units="in", res=300)
+drawHistogram(Dummy)
+dev.off()
+@
+We then normalize between arrays using the \Sexpr{config$algorithms$betweenArray} 
+algorithm and draw a set of diagnostic MA  plots. 
+<<betweenArrayDiagnositic>>=
+Slides.norm<-normalizeBetweenArrays(Slides.norm, method=config$algorithms$betweenArray)
+Dummy<-newMadbSet(Slides.norm)
+HIST_A=paste(config$files$tmpDir,"/", "histAfterBAN.png",sep="")
+png(HIST_A, width=7, height=7, units="in", res=300)
+drawHistogram(Dummy)
+dev.off()
+for(i in 0:(config$count-1)) {
+	FILENAME<-paste(config$files$tmpDir, "/maAfterBAN",i, ".png", sep="" )
+	png(FILENAME, width=7, height=7, units="in", res=300)
+	drawMA(Dummy, r=1+2*i, g=2+2*i, 
+			colramp=colorRampPalette(rev(brewer.pal(9,"Blues")[2:9])))
+	dev.off()
+}
+@
+\begin{figure}[htb!]
+\centering
+\subfigure[Before between array normalization]{
+\includegraphics[width=3.25in]{\Sexpr{return(HIST_B)}}}
+\subfigure[After between array normalization]{
+\includegraphics[width=3.25in]{\Sexpr{return(HIST_A)}}}
+\caption{Histogram of all arrays within this experiment before and after 
+the between array normalization}
+\end{figure}
+\pagebreak
+The quality of the within array normalization process can also be assessed 
+using a boxplot.
+<<boxplot3>>=
+Dummy<-newMadbSet(Slides.norm)
+BOX3=paste(config$files$tmpDir, "/", "boxPlot3.png",sep="")
+png(BOX3, width=7, height=7, units="in", res=300)
+drawBoxplot(Dummy, log2.transform = TRUE)
+dev.off()
+@
+\begin{figure}[htb!]
+\centering
+\includegraphics{\Sexpr{return(BOX3)}}
+\end{figure}
+\pagebreak
+\Sexpr{getPairedMAFiguresBAN(config)}
+
+<<rm_control_probes>>=
+control_mask<-(Slides.norm$genes$ControlType != 0)
+Slides.norm<- Slides.norm[!control_mask,]
+cat("Removed ", sum(control_mask), " control probes.\n")
+gene_names <- getUniqueGeneNames(config)
+cat(length(gene_names), " genes were found. ")
+@
+All dye swapped columns must be labelled in the metadata file as XXX and XXX\_DF
+<<bind_data_structures>>=
+candidates = getConditionNames(Slides.norm)
+conditions = getConditions(Slides.norm)
+dye_swaps  = getDyeSwaps(Slides.norm)
+fwd_mask   <-getForwardMask(Slides.norm, conditions)
+ncols <- length(conditions)
+nrows <- length(gene_names)
+
+output_data <- matrix(rep(-1,nrows*ncols), ncol=ncols)
+colnames(output_data)<-conditions
+rownames(output_data)<-gene_names
+
+for(i in 1:length(gene_names)) {
+	output_data[i,]<-divide(gene_names[i], Slides.norm, config, candidates, conditions, dye_swaps,fwd_mask)
+}
+write.table(output_data,file=config$files$output,sep="\t",col.names=NA)
+end_time = Sys.time()
+cat("Time to generate document: ", end_time - start_time,'\n')
+@
+
+\end{document}
+
